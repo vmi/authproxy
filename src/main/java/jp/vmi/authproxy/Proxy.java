@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Properties;
@@ -54,6 +56,14 @@ public final class Proxy {
         }
     }
 
+    private static String urlDecode(String s) {
+        try {
+            return URLDecoder.decode(s, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private static Proxy configByArgs(String... args) {
         if (args.length != 5) {
             return null;
@@ -76,8 +86,8 @@ public final class Proxy {
         String localPort = localPort(args);
         String host = matcher.group("host");
         String port = matcher.group("port");
-        String user = matcher.group("user");
-        String password = matcher.group("password");
+        String user = urlDecode(matcher.group("user"));
+        String password = urlDecode(matcher.group("password"));
         return new Proxy(localPort, host, port, user, password);
     }
 
