@@ -4,6 +4,7 @@
 /target
 /authproxy
 /authproxy.cmd
+/pom.xml.versionsBackup
 *~
 .*~
 *.swp
