@@ -18,7 +18,7 @@ The format is as follows:
 
 `http_proxy=http://`_USER_`:`_PASSWORD_`@`_HOST_`:`_PORT_`/`
 
-### By `proxy.properties` file in current directory
+### By `authproxy.properties` file in current directory
 
 The format is as follows:
 
