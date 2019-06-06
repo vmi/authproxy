@@ -21,7 +21,7 @@ public final class Main {
      * <ol>
      * <li>command line arguments: HOST PORT USER PASSWORD <del>[NO_PROXY ...]</del></li>
      * <li>environment variables: "http_proxy" <del>and "no_proxy"</del>.</li>
-     * <li>configuration file: ./proxy.properties</li>
+     * <li>configuration file: ./authproxy.properties</li>
      * </ol>
      *
      * Note: currently, no proxy is not supported.
