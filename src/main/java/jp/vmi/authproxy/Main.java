@@ -33,6 +33,10 @@ public final class Main {
     @SuppressWarnings("unused")
     public static void main(String[] args) throws Exception {
         Proxy proxy = Proxy.configure(args);
+        if (proxy == null) {
+            System.err.println("[ERROR] No proxy configuration. Abort.");
+            System.exit(1);
+        }
         logger.info(proxy);
         HttpProxyServer server = DefaultHttpProxyServer.bootstrap()
             .withPort(proxy.localPort)
