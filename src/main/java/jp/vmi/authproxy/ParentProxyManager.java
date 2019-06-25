@@ -3,11 +3,11 @@ package jp.vmi.authproxy;
 import java.net.InetSocketAddress;
 import java.util.Queue;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.littleshoot.proxy.ChainedProxy;
 import org.littleshoot.proxy.ChainedProxyAdapter;
 import org.littleshoot.proxy.ChainedProxyManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.netty.handler.codec.http.HttpRequest;
 
@@ -16,7 +16,7 @@ import io.netty.handler.codec.http.HttpRequest;
  */
 public class ParentProxyManager implements ChainedProxyManager {
 
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(ParentProxyManager.class);
 
     private final Proxy proxy;
 

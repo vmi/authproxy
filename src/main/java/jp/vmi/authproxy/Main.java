@@ -1,16 +1,23 @@
 package jp.vmi.authproxy;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.littleshoot.proxy.HttpProxyServer;
 import org.littleshoot.proxy.impl.DefaultHttpProxyServer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import jp.vmi.authproxy.logging.LoggerConfigurator;
 
 /**
  * Auth proxy repeater.
  */
 public final class Main {
 
-    private static final Logger logger = LogManager.getLogger();
+    static {
+        System.setProperty("io.netty.noJavassist", "true");
+        LoggerConfigurator.initialize();
+    }
+
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     /**
      * Main.
@@ -30,18 +37,21 @@ public final class Main {
      * @param args command line arguments.
      * @throws Exception exception.
      */
-    @SuppressWarnings("unused")
     public static void main(String[] args) throws Exception {
         Proxy proxy = Proxy.configure(args);
         if (proxy == null) {
             System.err.println("[ERROR] No proxy configuration. Abort.");
             System.exit(1);
         }
-        logger.info(proxy);
+        logger.info("{}", proxy);
         HttpProxyServer server = DefaultHttpProxyServer.bootstrap()
             .withPort(proxy.localPort)
             .withFiltersSource(new ProxyAuthorizationHandler(proxy))
             .withChainProxyManager(new ParentProxyManager(proxy))
             .start();
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> server.stop()));
+        while (true) {
+            Thread.sleep(Long.MAX_VALUE);
+        }
     }
 }

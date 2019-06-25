@@ -3,9 +3,16 @@
 /.settings
 /target
 /authproxy
-/authproxy.cmd
+/authproxy.*
 /pom.xml.versionsBackup
+/lib
 *~
 .*~
+\#*
+.\#*
 *.swp
 .*.swp
+*.log
+*.o
+*.obj
+*.exe

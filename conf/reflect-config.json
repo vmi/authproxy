@@ -1,0 +1,8 @@
+[
+  {
+    "name": "java.nio.DirectByteBuffer",
+    "methods": [
+      { "name": "<init>", "parameterTypes": ["long", "int"] }
+    ]
+  }
+]
