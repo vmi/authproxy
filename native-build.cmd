@@ -5,4 +5,5 @@ native-image ^
   --report-unsupported-elements-at-runtime ^
   --no-fallback ^
   -H:+ReportExceptionStackTraces ^
+  -H:ReflectionConfigurationFiles=conf/reflect-config.json ^
   -jar target/authproxy.jar

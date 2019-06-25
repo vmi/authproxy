@@ -12,6 +12,10 @@ public final class Main {
 
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
+    static {
+        System.setProperty("io.netty.noJavassist", "true");
+    }
+
     /**
      * Main.
      *
@@ -43,5 +47,14 @@ public final class Main {
             .withFiltersSource(new ProxyAuthorizationHandler(proxy))
             .withChainProxyManager(new ParentProxyManager(proxy))
             .start();
+        try {
+            while (true) {
+                Thread.sleep(Long.MAX_VALUE);
+            }
+        } catch (InterruptedException e) {
+            System.err.println("[INFO] Shutdown start...");
+            server.stop();
+            System.err.println("[INFO] Done.");
+        }
     }
 }
