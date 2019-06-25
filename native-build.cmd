@@ -5,4 +5,4 @@ native-image ^
   --report-unsupported-elements-at-runtime ^
   --no-fallback ^
   -H:+ReportExceptionStackTraces ^
-  target/authproxy.jar
+  -jar target/authproxy.jar
