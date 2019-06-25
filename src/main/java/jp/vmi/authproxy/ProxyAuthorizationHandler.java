@@ -1,10 +1,10 @@
 package jp.vmi.authproxy;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.littleshoot.proxy.HttpFilters;
 import org.littleshoot.proxy.HttpFiltersAdapter;
 import org.littleshoot.proxy.HttpFiltersSourceAdapter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpObject;
@@ -16,7 +16,7 @@ import io.netty.handler.codec.http.HttpResponse;
  */
 public class ProxyAuthorizationHandler extends HttpFiltersSourceAdapter {
 
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(ProxyAuthorizationHandler.class);
 
     private final Proxy proxy;
 

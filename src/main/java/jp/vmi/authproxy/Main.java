@@ -1,16 +1,16 @@
 package jp.vmi.authproxy;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.littleshoot.proxy.HttpProxyServer;
 import org.littleshoot.proxy.impl.DefaultHttpProxyServer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Auth proxy repeater.
  */
 public final class Main {
 
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     /**
      * Main.
@@ -37,7 +37,7 @@ public final class Main {
             System.err.println("[ERROR] No proxy configuration. Abort.");
             System.exit(1);
         }
-        logger.info(proxy);
+        logger.info("{}", proxy);
         HttpProxyServer server = DefaultHttpProxyServer.bootstrap()
             .withPort(proxy.localPort)
             .withFiltersSource(new ProxyAuthorizationHandler(proxy))
