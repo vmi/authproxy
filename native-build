@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -eux
+
+native-image \
+  --allow-incomplete-classpath \
+  --report-unsupported-elements-at-runtime \
+  --no-fallback \
+  -H:+ReportExceptionStackTraces \
+  -H:ReflectionConfigurationFiles=conf/reflect-config.json \
+  -jar target/authproxy.jar
