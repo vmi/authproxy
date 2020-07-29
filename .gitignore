@@ -5,6 +5,9 @@
 /authproxy
 /authproxy.*
 /pom.xml.versionsBackup
+/setenv.cmd
+/setenv.sh
+/java_home.conf
 /lib
 *~
 .*~

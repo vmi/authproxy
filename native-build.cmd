@@ -1,5 +1,6 @@
 @chcp 65001
-@call "%ProgramFiles(x86)%\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" /Release /x64 2> NUL
+@call "%ProgramFiles(x86)%\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
+@call "setenv.cmd"
 native-image ^
   --allow-incomplete-classpath ^
   --report-unsupported-elements-at-runtime ^
