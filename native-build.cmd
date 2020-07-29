@@ -1,5 +1,5 @@
 @chcp 65001
-@call "%PROGRAMFILES%\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.cmd" /Release /x64 2> NUL
+@call "%ProgramFiles(x86)%\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat" /Release /x64 2> NUL
 native-image ^
   --allow-incomplete-classpath ^
   --report-unsupported-elements-at-runtime ^

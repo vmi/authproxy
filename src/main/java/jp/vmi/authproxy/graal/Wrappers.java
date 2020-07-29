@@ -60,16 +60,6 @@ final class Target_io_netty_util_internal_logging_InternalLoggerFactory {
 
 // for logback
 
-@SuppressWarnings("restriction")
-@TargetClass(sun.reflect.Reflection.class)
-final class Target_sun_reflect_Reflection {
-
-    @Substitute
-    public static Class<?> getCallerClass(int depth) {
-        throw new UnsupportedOperationException();
-    }
-}
-
 @TargetClass(org.slf4j.helpers.Util.class)
 final class Target_org_slf4j_helpers_Util {
 
