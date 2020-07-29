@@ -1,7 +1,16 @@
 #!/bin/bash
 
-set -eux
+set -eu
 
+case "$OSTYPE" in
+  cygwin)
+  set -x
+  exec "$(dirname "$0")/native-build.cmd"
+  exit 1
+  ;;
+esac
+
+set -x
 native-image \
   --allow-incomplete-classpath \
   --report-unsupported-elements-at-runtime \
