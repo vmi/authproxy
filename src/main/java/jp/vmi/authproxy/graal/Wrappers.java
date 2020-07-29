@@ -100,16 +100,6 @@ final class Target_org_apache_logging_log4j_core_config_plugins_convert_DateType
 
 // for slf4j
 
-@SuppressWarnings("restriction")
-@TargetClass(sun.reflect.Reflection.class)
-final class Target_sun_reflect_Reflection {
-
-    @Substitute
-    public static Class<?> getCallerClass(int depth) {
-        throw new UnsupportedOperationException();
-    }
-}
-
 @TargetClass(org.slf4j.helpers.Util.class)
 final class Target_org_slf4j_helpers_Util {
 
