@@ -16,7 +16,7 @@ import io.netty.handler.codec.http.HttpRequest;
  */
 public class ParentProxyManager implements ChainedProxyManager {
 
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(ParentProxyManager.class);
 
     private final Proxy proxy;
 

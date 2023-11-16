@@ -10,7 +10,7 @@ import org.littleshoot.proxy.impl.DefaultHttpProxyServer;
  */
 public final class Main {
 
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(Main.class);
 
     /**
      * Main.

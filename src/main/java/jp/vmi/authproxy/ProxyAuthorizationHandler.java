@@ -16,7 +16,7 @@ import io.netty.handler.codec.http.HttpResponse;
  */
 public class ProxyAuthorizationHandler extends HttpFiltersSourceAdapter {
 
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(ProxyAuthorizationHandler.class);
 
     private final Proxy proxy;
 

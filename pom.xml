@@ -3,10 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>jp.vmi</groupId>
   <artifactId>authproxy</artifactId>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
   <properties>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.release>11</maven.compiler.release>
+    <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.version.rules>file://${basedir}/version-rules.xml</maven.version.rules>
@@ -16,7 +17,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.1.0</version>
+        <version>3.5.1</version>
         <configuration>
           <finalName>authproxy</finalName>
           <transformers>
@@ -27,6 +28,46 @@
               </manifestEntries>
             </transformer>
           </transformers>
+          <filters>
+            <filter>
+              <artifact>*:*</artifact>
+              <excludes>
+                <exclude>**/module-info.class</exclude>
+                <exclude>**/package-info.class</exclude>
+              </excludes>
+            </filter>
+            <filter>
+              <artifact>org.apache.logging.log4j:*</artifact>
+              <excludes>
+                <exclude>META-INF/MANIFEST.MF</exclude>
+                <exclude>META-INF/DEPENDENCIES</exclude>
+                <exclude>META-INF/LICENSE</exclude>
+                <exclude>META-INF/NOTICE</exclude>
+                <exclude>/org/apache/logging/log4j/util/Base64Util.class</exclude>
+                <exclude>/org/apache/logging/log4j/util/ProcessIdUtil.class</exclude>
+                <exclude>/org/apache/logging/log4j/util/StackLocator.class</exclude>
+                <exclude>/org/apache/logging/log4j/util/internal/DefaultObjectInputFilter.class</exclude>
+                <exclude>/org/apache/logging/log4j/core/impl/ExtendedStackTraceElement.class</exclude>
+                <exclude>/org/apache/logging/log4j/core/jackson/ExtendedStackTraceElementMixIn.class</exclude>
+                <exclude>/org/apache/logging/log4j/core/jackson/Log4jStackTraceElementDeserializer.class</exclude>
+                <exclude>/org/apache/logging/log4j/core/jackson/StackTraceElementMixIn.class</exclude>
+                <exclude>/org/apache/logging/log4j/core/util/SystemClock.class</exclude>
+                <exclude>/org/apache/logging/log4j/core/util/internal/UnsafeUtil$1.class</exclude>
+              </excludes>
+            </filter>
+            <filter><artifact>*:barchart-udt-bundle</artifact><excludes><exclude>META-INF/MANIFEST.MF</exclude></excludes></filter>
+            <filter><artifact>*:commons-lang3</artifact><excludes><exclude>META-INF/MANIFEST.MF</exclude></excludes></filter>
+            <filter><artifact>*:guava</artifact><excludes><exclude>META-INF/MANIFEST.MF</exclude></excludes></filter>
+            <filter><artifact>*:littleproxy</artifact><excludes><exclude>META-INF/MANIFEST.MF</exclude></excludes></filter>
+            <filter><artifact>*:netty-all</artifact><excludes><exclude>META-INF/MANIFEST.MF</exclude></excludes></filter>
+            <filter><artifact>*:slf4j-api</artifact><excludes><exclude>META-INF/MANIFEST.MF</exclude></excludes></filter>
+          </filters>
+          <relocations>
+            <relocation>
+              <pattern>/META-INF/versions/9/</pattern>
+              <shadedPattern>/</shadedPattern>
+            </relocation>
+          </relocations>
         </configuration>
         <executions>
           <execution>
